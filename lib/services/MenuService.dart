@@ -42,4 +42,3 @@ Future loadMenu() async {
   ApiResult MyResult = new ApiResult.fromJson(jsonResponse);
   print("*********************** CART ITEM COUNT: "+MyResult.cart_item_count.toString()+" *******************");
   */
-}
