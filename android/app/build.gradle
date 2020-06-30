@@ -47,7 +47,27 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+/*
+    flavorDimensions "flavor-type"
 
+    productFlavors {
+        megakitap {
+            dimension "flavor-type"
+            applicationIdSuffix "megakitap"
+            resValue "string", "app_name", "Megakitap"
+        }
+        artshopix {
+            dimension "flavor-type"
+            applicationIdSuffix "artshopix"
+            resValue "string", "app_name", "Artshopix"
+        }
+        yinyogashop {
+            dimension "flavor-type"
+            applicationIdSuffix "yinyogashop"
+            resValue "string", "app_name", "Yinyogashop"
+        }
+    }
+*/
     compileSdkVersion 28
 
     sourceSets {
@@ -60,7 +80,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.fidankitap.app"
+        applicationId "com.megakitapdebug.app"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
@@ -78,7 +98,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
 }
