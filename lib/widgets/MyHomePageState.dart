@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:convert';
+//import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:app/widgets/NavDrawer.dart';
 import 'package:app/utils/Constants.dart';
 import 'package:app/widgets/MyHomePage.dart';
 import 'package:app/widgets/MyAppBar.dart';
 import 'package:app/widgets/MyBottomBar.dart';
-import 'package:app/models/ApiResult2.dart';
+//import 'package:app/models/ApiResult2.dart';
 import 'package:app/Config/EnvironmentConfig.dart';
 
 
@@ -135,14 +135,6 @@ class MyHomePageState extends State<MyHomePage> {
 
                             _onPageFinished(controller);
 
-                            ///////////////////////////deneme
-
-
-                            ////////////////////////
-
-
-
-
                             //Map<String, dynamic> MobileInfoResult = await MyWebView.evaluateJavascript(source:'getMobileInfo();');
                             //_onPageFinished(MobileInfoResult);
                         },
@@ -195,7 +187,7 @@ class MyHomePageState extends State<MyHomePage> {
       username=args[1].toString();
       //cart_prd_count=args[0];
       cart_prd_count_notifier.value=cart_prd_count;
-      back_button_notifier.value=back_button_enabled;
+      //back_button_notifier.value=back_button_enabled;
 
       //print("From the JavaScript side:");
       //print(args);//+" cart_prd_count:"+cart_prd_count.toString());
