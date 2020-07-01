@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:app/widgets/NavDrawer.dart';
 import 'package:app/utils/Constants.dart';
@@ -131,8 +132,19 @@ class MyHomePageState extends State<MyHomePage> {
                             else{
                               back_button_enabled=true;
                             }
-                            Map<String, dynamic> MobileInfoResult = await MyWebView.evaluateJavascript(source:'getMobileInfo();');
-                            _onPageFinished(MobileInfoResult);
+
+                            _onPageFinished(controller);
+
+                            ///////////////////////////deneme
+
+
+                            ////////////////////////
+
+
+
+
+                            //Map<String, dynamic> MobileInfoResult = await MyWebView.evaluateJavascript(source:'getMobileInfo();');
+                            //_onPageFinished(MobileInfoResult);
                         },
                         onProgressChanged: (InAppWebViewController controller, int progress) {
                           setProgess(progress/100);
@@ -175,7 +187,22 @@ class MyHomePageState extends State<MyHomePage> {
       )
     );
   }
+  _onPageFinished(myWebViewController) {
+    myWebViewController.addJavaScriptHandler(handlerName: "sayHello", callback: (args) {
+      // Here you receive all the arguments from the JavaScript side
+      // that is a List<dynamic>
+      cart_prd_count=int.parse(args[0].toString());
+      username=args[1].toString();
+      //cart_prd_count=args[0];
+      cart_prd_count_notifier.value=cart_prd_count;
+      back_button_notifier.value=back_button_enabled;
 
+      //print("From the JavaScript side:");
+      //print(args);//+" cart_prd_count:"+cart_prd_count.toString());
+      return "Hello from Dart";
+    });
+  }
+  /*
   _onPageFinished(parsedJson) {
 
       final ApiResult2 MyApiResult = new ApiResult2.fromJson(parsedJson);
@@ -189,5 +216,5 @@ class MyHomePageState extends State<MyHomePage> {
       //NavDrawerState.setState();
 
   }
-
+  */
 }
