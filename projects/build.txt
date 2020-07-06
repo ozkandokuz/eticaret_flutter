@@ -1,2 +1,2 @@
 flutter build appbundle --dart-define=DEF_APP_URL=www.megakitap.com --dart-define=DEF_APP_NAME=MegaKitap --dart-define=DEF_APP_SUFFIX=.dev
-flutter build appbundle --dart-define=DEF_APP_URL=www.fidankitap.com --dart-define=DEF_APP_NAME=FidanKitap --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.fidankitap.comgit push origin  --dart-define=DEF_APP_NAME=FidanKitap --dart-define=DEF_APP_SUFFIX=.dev
