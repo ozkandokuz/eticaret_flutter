@@ -24,6 +24,7 @@ class MyAppBarState extends State<MyAppBar> {
               onPressed: () => Scaffold.of(context).openDrawer()
           ),
           backgroundColor: HexColor(GlobalConfiguration().getString("app_bar_bg_color")),
+          brightness: GlobalConfiguration().getString("status_bar_light") == "light" ? Brightness.light: Brightness.dark,
           iconTheme: IconThemeData(
               color: HexColor(GlobalConfiguration().getString("app_bar_text_color")) ///Colors.white
           ),
