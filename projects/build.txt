@@ -1,2 +1,23 @@
 flutter build appbundle --dart-define=DEF_APP_URL=www.megakitap.com --dart-define=DEF_APP_NAME=MegaKitap --dart-define=DEF_APP_SUFFIX=.dev
-flutter build appbundle --dart-define=DEF_APP_URL=www.fidankitap.comgit push origin  --dart-define=DEF_APP_NAME=FidanKitap --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.fidankitap.com --dart-define=DEF_APP_NAME=FidanKitap --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.kitapkoala.com  --dart-define=DEF_APP_NAME=KitapKoala --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.sozcukitabevi.com  --dart-define=DEF_APP_NAME=SozcuKitabevi --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.ilknokta.com --dart-define=DEF_APP_NAME=ilknokta --dart-define=DEF_APP_SUFFIX=.dev
+flutter build appbundle --dart-define=DEF_APP_URL=www.yinyogashop.com --dart-define=DEF_APP_NAME=YinYogaShop --dart-define=DEF_APP_SUFFIX=.dev
+
+mac te ios klasörünü sil ya da başka yere kopyala.
+git den clone lanmış sıfır ios klasörünü projenin içine al  (desktop/tmp altındaki klasörden)
+projects klasöründen ilgili projenin ios klasörünü üstüne kopyala.
+
+signing capabilities e pushnotif ekle.    -ITMS-90078: Missing Push Notification Entitlement hatası için
+infoplist teki CFBundleName  alanına projenin display nameini yaz. FidanKitap gibi.  com.ilknokta.app yazma.
+
+info plist eklenmesi gerekenler
+  <key>io.flutter.embedded_views_preview</key><true/>  
+  <key>ITSAppUsesNonExemptEncryption</key><false/>
+  <key>NSAppTransportSecurity</key><dict><key>NSAllowsArbitraryLoads</key><true/></dict>
+
+  
+  https://flutter.dev/docs/deployment/ios  bu sayfadan devam et
+  
+  archives sayfasında proje adı runner görünür sorun değil. app yayına çıkınca kendisi düzeliyor.
