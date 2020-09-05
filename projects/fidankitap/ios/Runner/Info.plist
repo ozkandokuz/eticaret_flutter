@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>com.fidankitap.app</string>
+	<string>KitapKoala</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -39,12 +39,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-<key>io.flutter.embedded_views_preview</key>
-<true/>
 
-	<key>NSAppTransportSecurity</key>
+    <key>UIViewControllerBasedStatusBarAppearance</key><false/>
+    <key>io.flutter.embedded_views_preview</key><true/>
+    <key>ITSAppUsesNonExemptEncryption</key><false/>
+    <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key><true/>
     </dict>
