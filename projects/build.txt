@@ -21,3 +21,6 @@ info plist eklenmesi gerekenler
   https://flutter.dev/docs/deployment/ios  bu sayfadan devam et
   
   archives sayfasında proje adı runner görünür sorun değil. app yayına çıkınca kendisi düzeliyor.
+
+  5.5 inch - iphone 8 plus
+  6.5 inch -  iphone 11 pro max
