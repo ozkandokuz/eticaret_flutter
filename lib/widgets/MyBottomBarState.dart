@@ -74,12 +74,14 @@ class MyBottomBarState extends State<MyBottomBar> {
         title: Text('Anasayfa',style: _textStyle()),
       );
     }
+    /*
     _navItemBack(){
       return BottomNavigationBarItem(
         icon: Icon(Icons.arrow_back),
         title: Container(height: 0.0),
       );
-    }
+    }*/
+    /*
     _navItems1() {
       return <BottomNavigationBarItem>[
         _navItemBack(),
@@ -87,7 +89,7 @@ class MyBottomBarState extends State<MyBottomBar> {
         _navItemCart(),
         _navItemSiparisler(),
       ];
-    }
+    }*/
     _navItems2() {
       return <BottomNavigationBarItem>[
         _navItemHome(),
@@ -104,25 +106,28 @@ class MyBottomBarState extends State<MyBottomBar> {
 
 
     return  ValueListenableBuilder(
-      builder: (BuildContext context, bool value, Widget child) {
+      builder: (BuildContext context, bool back_button_enabled, Widget child) {
         // This builder will only get called when the back_button_notifier
         // is updated.
         return BottomNavigationBar(
           currentIndex: 0,
           //onTap: _onItemTapped,//
-          onTap: value ? _onItemTappedBackEnabled : _onItemTapped,
+          //onTap: back_button_enabled ? _onItemTappedBackEnabled : _onItemTapped,
+          onTap: _onItemTapped,
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
-          items: value ? _navItems1() :_navItems2(),
+          //items: back_button_enabled ? _navItems1() :_navItems2(),
+          items: _navItems2(),
           );
       },
       valueListenable: widget.back_button_notifier,
     );
   }
+  /*
   void _goBack(){
     widget.callback("back");
-  }
+  }*/
   void _goToHomePage(){
     widget.callback(EnvironmentConfig.getUrl()+"/"+"?"+Constants.MOBILE_PARAMS);
   }
@@ -150,7 +155,7 @@ class MyBottomBarState extends State<MyBottomBar> {
         break;
     }
   }
-
+/*
   void _onItemTappedBackEnabled(_index) {
     switch (_index) {
       case 0:
@@ -164,5 +169,5 @@ class MyBottomBarState extends State<MyBottomBar> {
         break;
     }
   }
-
+*/
 }

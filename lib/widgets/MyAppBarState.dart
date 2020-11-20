@@ -17,9 +17,13 @@ class MyAppBarState extends State<MyAppBar> {
   dispose() {
     super.dispose();
   }
-  _AppBarDefault() {
+  _AppBarDefault(back_button_enabled) {
       return AppBar(
-          leading: new IconButton(
+          leading: back_button_enabled ? new IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: _backPressed
+          ):
+          new IconButton(
               icon: new Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openDrawer()
           ),
@@ -30,8 +34,11 @@ class MyAppBarState extends State<MyAppBar> {
           ),
           //title: Text(GlobalConfiguration().getString("logo")!=null? GlobalConfiguration().getString("logo") : ""),//
             //title: Text(EnvironmentConfig.APP_NAME),
-          title: new Image.network(GlobalConfiguration().getString("logo")),
-          actions: _AppBarActions(),//widget.back_button_enabled ? _AppBarActionsBackEnabled() : _AppBarActionsBackDisabled()
+          title: new Image.network(GlobalConfiguration().getString("logo"),
+              fit: BoxFit.cover),
+          //actions: back_button_enabled ? _AppBarActionsBackEnabled() : _AppBarActions()
+          actions: _AppBarActions()
+
     );
   }
 /*
@@ -99,7 +106,18 @@ class MyAppBarState extends State<MyAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AppBarSearchVisible?_AppBarSearch():_AppBarDefault();
+    //return AppBarSearchVisible?_AppBarSearch():_AppBarDefault();
+
+    return  ValueListenableBuilder(
+      builder: (BuildContext context, bool value, Widget child) {
+        // This builder will only get called when the back_button_notifier
+        // is updated.
+        return AppBarSearchVisible?_AppBarSearch():_AppBarDefault(value);
+      },
+      valueListenable: widget.back_button_notifier,
+    );
+
+
   }
   /*
   void _goToHomePage(){
@@ -113,10 +131,10 @@ class MyAppBarState extends State<MyAppBar> {
   */
   void _goToMyAccount(){
     widget.callback(EnvironmentConfig.getUrl()+"/login"+"?"+Constants.MOBILE_PARAMS);
-  }/*
+  }
   void _backPressed(){
     widget.callback("back");
-  }*/
+  }
   void _searchPressed() {
     setState(() {
       if (!AppBarSearchVisible) {

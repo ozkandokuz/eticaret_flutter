@@ -15,7 +15,7 @@ import 'package:app/Config/EnvironmentConfig.dart';
 class MyHomePageState extends State<MyHomePage> {
   InAppWebViewController MyWebView;
   //ProgressDialog pr;
-  String username="...";
+  String username="";
   ValueNotifier<bool> back_button_notifier = ValueNotifier<bool>(false);
   ValueNotifier<int> cart_prd_count_notifier = ValueNotifier<int>(0);
   ValueNotifier<double> progress_notifier = ValueNotifier<double>(1.0);
@@ -81,7 +81,7 @@ class MyHomePageState extends State<MyHomePage> {
           home: Scaffold(
             //key: _scaffoldKey,
             drawer: NavDrawer(callback,getUsername),
-            appBar: MyAppBar(callback,logo_url),
+            appBar: MyAppBar(callback,logo_url,back_button_notifier),
             bottomNavigationBar: MyBottomBar(callback,cart_prd_count_notifier,back_button_notifier),
             /*
             floatingActionButton: FloatingActionButton(
@@ -111,6 +111,7 @@ class MyHomePageState extends State<MyHomePage> {
                         },
                         onLoadStart: (InAppWebViewController controller, String url) {
 
+                          _backButtonDetect(url);
                             //this.weburl = url;
                           setProgess(0.0);
                         },
@@ -126,12 +127,8 @@ class MyHomePageState extends State<MyHomePage> {
                            */
                             setProgess(1.0);
                             //this.weburl = url;
-                            if(url==EnvironmentConfig.getUrl()+"/"+"?"+Constants.MOBILE_PARAMS){
-                              back_button_enabled=false;
-                            }
-                            else{
-                              back_button_enabled=true;
-                            }
+
+                            _backButtonDetect(url);
 
                             _onPageFinished(controller);
 
@@ -179,6 +176,15 @@ class MyHomePageState extends State<MyHomePage> {
       )
     );
   }
+  _backButtonDetect(url){
+    if(url==EnvironmentConfig.getUrl()+"/"+"?"+Constants.MOBILE_PARAMS){
+      back_button_enabled=false;
+    }
+    else{
+      back_button_enabled=true;
+    }
+    back_button_notifier.value=back_button_enabled;
+  }
   _onPageFinished(myWebViewController) {
     myWebViewController.addJavaScriptHandler(handlerName: "sayHello", callback: (args) {
       // Here you receive all the arguments from the JavaScript side
@@ -187,7 +193,7 @@ class MyHomePageState extends State<MyHomePage> {
       username=args[1].toString();
       //cart_prd_count=args[0];
       cart_prd_count_notifier.value=cart_prd_count;
-      //back_button_notifier.value=back_button_enabled;
+      back_button_notifier.value=back_button_enabled;
 
       //print("From the JavaScript side:");
       //print(args);//+" cart_prd_count:"+cart_prd_count.toString());

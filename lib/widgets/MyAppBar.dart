@@ -9,8 +9,9 @@ class MyAppBar extends StatefulWidget with PreferredSizeWidget{
 
   Function(String) callback;
   String logo_url;
+  ValueNotifier<bool> back_button_notifier = ValueNotifier<bool>(false);
 
-  MyAppBar(this.callback, this.logo_url);
+  MyAppBar(this.callback, this.logo_url,this.back_button_notifier);
 
   @override
   State<StatefulWidget> createState() => new MyAppBarState();
